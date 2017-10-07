@@ -12,7 +12,7 @@ services:
       - /var/lock
       - /var/log
     volumes:
-      - /tmp/bluetooth-6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf
+      - /tmp/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf
   cf-proxy-coap-http:
     image: linarotechnologies/cf-proxy-coap-http:latest
     read_only: true
