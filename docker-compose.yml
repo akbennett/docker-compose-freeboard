@@ -12,7 +12,7 @@ services:
       - /var/lock
       - /var/log
     volumes:
-      - /tmp/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf
+      - "/tmp/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf"
   cf-proxy-coap-http:
     image: linarotechnologies/cf-proxy-coap-http:latest
     read_only: true
@@ -34,5 +34,4 @@ services:
     read_only: true
     restart: always
     volumes:
-      - /tmp/mosquitto-minimal.conf:/etc/mosquitto/conf.d/mosquitto.conf
-      
+      - "/tmp/mosquitto-minimal.conf:/etc/mosquitto/conf.d/mosquitto.conf"
