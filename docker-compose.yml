@@ -27,3 +27,10 @@ services:
     tmpfs:
       - /var/run
       - /var/cache/nginx
+  mosquitto-minimal:
+    image: linarotechnologies/mosquitto:latest
+    command: read_only: true
+    restart: always
+    volumes:
+      - ${PWD}/mosquitto-minimal.conf:/etc/mosquitto/conf.d/mosquitto.conf
+    
