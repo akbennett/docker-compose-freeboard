@@ -1,37 +1,18 @@
 version: '3'
 
 services:
-  bt-joiner:
-    image: linarotechnologies/bt-joiner:latest
-    privileged: true
-    read_only: true
-    restart: always
-    network_mode: "host"
-    tmpfs:
-      - /var/run
-      - /var/lock
-      - /var/log
-    volumes:
-      - /tmp/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf
-  cf-proxy-coap-http:
-    image: linarotechnologies/cf-proxy-coap-http:latest
-    read_only: true
-    restart: always
-    network_mode: "host"
   nginx-http-proxy:
-    image: linarotechnologies/nginx:latest
-    command: nginx-debug -g 'daemon off;'
+    image: linarotechnologies/freeboard:latest
     read_only: true
     restart: always
     network_mode: "host"
-    extra_hosts:
-      - "gitci.com:192.168.1.26"
+    ports:
+      - 80:80
     tmpfs:
       - /var/run
       - /var/cache/nginx
-  mosquitto-minimal:
-    image: linarotechnologies/mosquitto:latest
-    read_only: true
-    restart: always
     volumes:
-      - /tmp/mosquitto-minimal.conf:/etc/mosquitto/conf.d/mosquitto.conf
+      - /tmp/dashboards:/usr/share/nginx/html/dashboards
+      - /tmp/dashboards/default.json:/usr/share/nginx/html/default.json
+      - /tmp/dashboards/default.json:/usr/share/nginx/html/dashboard.json
+    command: sh -c
