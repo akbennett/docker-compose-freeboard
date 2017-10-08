@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  nginx-http-proxy:
+  freeboard:
     image: linarotechnologies/freeboard:latest
     read_only: true
     restart: always
